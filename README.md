@@ -9,7 +9,7 @@ Contains:
 
 -tmux
 
--xinitrc
+-xresources
 
 -i3
 
