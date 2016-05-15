@@ -1,0 +1,115 @@
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+ 
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.rgba:                   rgb
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+!###
+!transparency
+!###
+!>>>
+urxvt*transparent: true
+urxvt*shading: 30
+!###endof
+ 
+ 
+URxvt.depth:                32
+URxvt.geometry:             90x30
+URxvt.transparent:          false
+URxvt.fading:               0
+! URxvt.urgentOnBell:         true
+! URxvt.visualBell:           true
+URxvt.loginShell:           true
+URxvt.saveLines:            50
+URxvt.internalBorder:       3
+URxvt.lineSpace:            0
+ 
+! Fonts
+URxvt.allow_bold:           false
+URxvt*font: xft:Terminus:pixelsize=13
+URxvt*boldFont: xft:Terminus:pixelsize=13
+ 
+! Fix font space
+URxvt*letterSpace: -6
+
+! Scrollbar
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+ 
+! Perl extensions
+URxvt.perl-ext-common:      default,matcher
+URxvt.matcher.button:       1
+URxvt.urlLauncher:          firefox
+ 
+! Cursor
+URxvt.cursorBlink:          true
+URxvt.cursorColor:          #af2325
+URxvt.cursorUnderline:      false
+ 
+! Pointer
+URxvt.pointerBlank:         true
+
+! --- special colors ---
+
+*background: #222222
+*foreground: #af2325
+
+! --- standard colors ---
+
+! black
+*color0: #0e0e0e
+
+! bright_black
+*color8: #222222
+
+! red
+*color1: #bb7936
+
+! bright_red
+*color9: #f8f0e8
+
+! green
+*color2: #36bb79
+
+! bright_green
+*color10: #e8f8f0
+
+! yellow
+*color3: #79bb36
+
+! bright_yellow
+*color11: #f0f8e8
+
+! blue
+*color4: #7936bb
+
+! bright_blue
+*color12: #f0e8f8
+
+! magenta
+*color5: #bb3679
+
+! bright_magenta
+*color13: #f8e8f0
+
+! cyan
+*color6: #3679bb
+
+! bright_cyan
+*color14: #e8f0f8
+
+! white
+*color7: #e4e4e4
+
+! bright_white
+*color15: #ffffff
+
+
+! ------------------------------------------------------------------------------
+! --- end of terminal colors section -------------------------------------------
+! ------------------------------------------------------------------------------
+
+

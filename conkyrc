@@ -1,0 +1,94 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+
+# Update interval in seconds
+update_interval 1.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Shortens units to a single character (kiB->k, GiB->G, etc.). Default is off.
+short_units yes
+
+# How strict should if_up be when testing an interface for being up?
+# The value is one of up, link or address, to check for the interface
+# being solely up, being up and having link or being up, having link
+# and an assigned IP address. 
+if_up_strictness address
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+# use_spacer should have an argument of left, right, or none
+use_spacer left
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 1
+
+# Stuff after 'TEXT' will be formatted on screen
+#color1 #00FF00
+TEXT
+# JSON for i3bar
+
+[
+
+
+
+### MPD CONKY
+# Any UTF8 JSON error may be cause by some invalid character in title/filename song, change it with necessary
+	{ "full_text" : ${if_mpd_playing}"  MpD"${else}""${endif},  "separator":false, "separator_block_width":5, "color":"\#808080"},
+	{ "full_text" :\
+	${if_mpd_playing}\
+                ${if_match "${mpd_random}"=="On"}\
+                ""\
+                ${else} ""\
+                ${endif}\
+	${else}""${endif},  "separator":false, "separator_block_width":3, "color" : ${if_match "${mpd_random}"=="On"}\
+                "\#333333"\
+                ${else} "\#56944e"\
+                ${endif}},
+	{ "full_text" :\
+	${if_mpd_playing}\
+                ${if_match "${mpd_repeat}"=="On"}\
+                ""\
+                ${else} ""\
+                ${endif}\
+	${else}""${endif},  "separator":false, "separator_block_width":5, "color" : ${if_match "${mpd_repeat}"=="On"}\
+                "\#56944e"\
+                ${else} "\#aa2525"\
+                ${endif}},
+
+	{ "full_text" : ${if_mpd_playing} ${if_match "${mpd_status}"=="Playing"}
+                                  " ${scroll 26 2 ${mpd_smart}} |"\
+                                  ${else} " ${scroll 26 2 ${mpd_smart}} |"\
+                                  ${endif}\
+                ${else}""${endif},  "separator":false, "separator_block_width":8, "color":"\#808080"},
+####
+
+	{ "full_text" : "  ${execi 300 ~/.bin/weather.sh "EUR|RO|RO037|TIMISOARA"}" , "color" : "\#808080" },
+
+	{ "full_text" : "  ${color1}${fs_free /}" , "color": "\#808080" },
+
+	{ "full_text" : "  ${exec amixer get Master | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}%" , "color" : "\#808080"},
+
+	{ "full_text" : " ${mem}" , "color" : ${if_match ${memperc}>80}"\#aa2525"${else}${if_match ${memperc}>60}"\#c9b400"${else}"\#56944e"${endif}${endif}},
+
+	{ "full_text" : "0: ${execi 10 sensors | grep 'Core 0' | awk '{print $3}' | grep -o -E '[0-9]+' | head -n 1}°C", "color" : "\#808080"},
+
+	{ "full_text" : "1: ${execi 10 sensors | grep 'Core 1' | awk '{print $3}' | grep -o -E '[0-9]+' | head -n 1}°C", "color" : "\#808080"},
+
+	{ "full_text" : " ${battery_percent BAT1}% ", "color" : ${if_match ${battery_percent BAT1}>=90}"\#56944e" ${else}${if_match ${battery_percent BAT1}>=60}"\#e6e600"${else} ${if_match ${battery_percent BAT1}>=40}"\#ffbb33"${else} ${if_match ${battery_percent BAT1}>=20}"\#ff9933" ${else} ${if_match ${battery_percent BAT1}>=10}"\#cc6600" ${else}"\#ff0000"${endif}${endif}${endif}${endif}${endif}},
+	
+	#{ "full_text" : "  ${apcupsd_status}" , "color": "\#808080" },
+
+	{ "full_text" : " ${execpi 3600 checkupdates | wc -l}",  "separator":false, "separator_block_width":8, "color" : "\#808080" },
+
+        { "full_text" : " [${time %b %e %H:%M:%S}]", "color" : "\#7c80be"}
+
+],
